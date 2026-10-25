@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#063f32">
+<meta name="description" content="AgathiyaNova Student Hub — Siddha education, study resources and learning guidance.">
+<title>Student Hub | AgathiyaNova</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --green: #063f32;
+  --green-light: #105b46;
+  --sage: #e7efe3;
+  --ivory: #f8f8f1;
+  --gold: #c59a4b;
+  --text: #243b32;
+  --muted: #68786d;
+  --white: #ffffff;
+  --border: #e2e6dc;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--ivory);
+  color: var(--text);
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.7;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  width: min(1120px, 90%);
+  margin: auto;
+}
+
+header {
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav {
+  min-height: 78px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  background: var(--green);
+  font-size: 27px;
+}
+
+.brand-name {
+  font-family: "Playfair Display", serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--green);
+}
+
+.brand-sub {
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.nav-cta {
+  background: var(--green);
+  color: white;
+  padding: 11px 16px;
+  border-radius: 10px;
+}
+
+.hero {
+  padding: 78px 0 65px;
+  background:
+    radial-gradient(ellipse at 90% 5%, #e3ecd9 0, transparent 40%),
+    var(--ivory);
+}
+
+.eyebrow {
+  color: #9b783b;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  line-height: 1.2;
+}
+
+h1 {
+  max-width: 760px;
+  margin: 18px 0;
+  color: var(--green);
+  font-size: clamp(38px, 7vw, 66px);
+  letter-spacing: -1.5px;
+}
+
+.hero p {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  border-radius: 11px;
+  padding: 13px 20px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform .2s, background .2s;
+}
+
+.button:hover { transform: translateY(-2px); }
+
+.primary {
+  background: var(--green);
+  color: white;
+}
+
+.secondary {
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--green);
+}
+
+.section { padding: 55px 0 75px; }
+
+.section-heading {
+  margin-bottom: 28px;
+}
+
+.section-heading h2 {
+  margin: 9px 0;
+  font-size: clamp(28px, 5vw, 40px);
+  color: var(--green);
+}
+
+.section-heading p {
+  max-width: 650px;
+  color: var(--muted);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 25px;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(6,63,50,.08);
+}
+
+.card-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 15px;
+  background: var(--sage);
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+}
+
+.card h3 {
+  font-size: 22px;
+  color: var(--green);
+  margin: 20px 0 10px;
+}
+
+.card p {
+  font-size: 14px;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+
+.card-link {
+  color: var(--green-light);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.feature {
+  background: var(--green);
+  color: white;
+  border-radius: 24px;
+  padding: clamp(26px, 5vw, 48px);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  align-items: center;
+  gap: 28px;
+}
+
+.feature h2 {
+  font-size: clamp(28px, 5vw, 38px);
+  margin: 12px 0;
+}
+
+.feature p { color: #d4e3d9; }
+
+.feature-visual {
+  text-align: center;
+  font-size: 90px;
+  padding: 25px;
+  border-radius: 20px;
+  background: rgba(255,255,255,.07);
+}
+
+.notice {
+  background: #fffaf0;
+  border: 1px solid #eadfc7;
+  border-radius: 13px;
+  padding: 18px 20px;
+  color: #776641;
+  font-size: 13px;
+  margin-top: 35px;
+}
+
+footer {
+  background: #032f26;
+  color: #e7eee7;
+  padding: 40px 0 25px;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 25px;
+}
+
+footer p {
+  color: #c0d1c6;
+  font-size: 13px;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 13px;
+}
+
+.copyright {
+  border-top: 1px solid rgba(255,255,255,.15);
+  margin-top: 28px;
+  padding-top: 18px;
+  font-size: 12px;
+  color: #b9c9bd;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 760px) {
+  .nav { min-height: 70px; }
+  .brand-name { font-size: 19px; }
+  .brand-sub { font-size: 8px; letter-spacing: 1px; }
+  .nav-links { gap: 10px; font-size: 12px; }
+  .nav-links .optional { display: none; }
+  .nav-cta { padding: 10px 12px; }
+  .hero { padding: 55px 0 42px; }
+  .hero p { font-size: 15px; }
+  .cards { grid-template-columns: 1fr; gap: 14px; }
+  .card { padding: 22px; }
+  .feature { grid-template-columns: 1fr; }
+  .feature-visual { font-size: 65px; }
+  .section { padding: 40px 0 55px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="brand" href="index.html">
+      <div class="logo">🌿</div>
+      <div>
+        <div class="brand-name">AgathiyaNova</div>
+        <div class="brand-sub">SIDDHA KNOWLEDGE & INNOVATION</div>
+      </div>
+    </a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="plants.html" class="optional">Plants</a>
+      <a href="research.html" class="optional">Research</a>
+      <a class="nav-cta" href="agathiyan.html">Agathiyan AI ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Your Learning Space</div>
+      <h1>Learn with purpose.<br>Grow with knowledge.</h1>
+      <p>
+        Welcome to the AgathiyaNova Student Hub — a learning space for
+        Siddha education, medicinal botany, scientific thinking and
+        responsible research.
+      </p>
+
+      <div class="hero-actions">
+        <a class="button primary" href="#learning">Explore Learning ↗</a>
+        <a class="button secondary" href="agathiyan.html">Ask Agathiyan AI 🌿</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="learning">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Explore & Discover</div>
+        <h2>Your learning journey</h2>
+        <p>
+          Choose a learning direction and explore educational resources
+          at your own pace.
+        </p>
+      </div>
+
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">📚</div>
+          <h3>Study & Learning</h3>
+          <p>
+            Organize your study journey, revise important concepts and
+            build a strong foundation in your subjects.
+          </p>
+          <a class="card-link" href="#study-guide">Explore study guide ↗</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🌿</div>
+          <h3>Medicinal Botany</h3>
+          <p>
+            Explore botanical names, plant families, identification
+            features and traditional plant knowledge.
+          </p>
+          <a class="card-link" href="plants.html">Explore plant library ↗</a>
+        </article>
+
+        <article class="card">
+          <div class="card-icon">🔬</div>
+          <h3>Research Skills</h3>
+          <p>
+            Learn to frame questions, search scientific literature,
+            evaluate evidence and cite sources responsibly.
+          </p>
+          <a class="card-link" href="research.html">Explore research ↗</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="study-guide">
+    <div class="container">
+      <div class="feature">
+        <div>
+          <div class="eyebrow" style="color:#e1bf7a">Your AI Learning Companion</div>
+          <h2>Meet Agathiyan AI</h2>
+          <p>
+            Explore concepts, ask study questions and discover learning
+            directions in Tamil, English or Tanglish. Always verify
+            important medical information with trusted references
+            and qualified professionals.
+          </p>
+          <a class="button secondary" href="agathiyan.html">Open Agathiyan AI ↗</a>
+        </div>
+        <div class="feature-visual" aria-hidden="true">🌱</div>
+      </div>
+
+      <div class="notice">
+        <strong>Educational note:</strong>
+        This page supports learning and research. AI-generated information
+        may be inaccurate. Do not use it alone for diagnosis, treatment
+        or medical decisions.
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="brand-name" style="color:white">AgathiyaNova</div>
+        <p>Ancient Wisdom. Future Innovation.</p>
+        <p>Exploring Siddha education, medicinal botany and modern research.</p>
+      </div>
+
+      <nav class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="students.html">Student Hub</a>
+        <a href="plants.html">Plant Library</a>
+        <a href="research.html">Research Hub</a>
+        <a href="agathiyan.html">Agathiyan AI</a>
+      </nav>
+    </div>
+
+    <div class="copyright">
+      <span>© 2026 AgathiyaNova · Educational platform</span>
+      <span>Ancient Wisdom. Future Innovation.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+  </html>
