@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Hub | AgathiyaNova</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#173d32;--deep:#102d25;--sage:#e8eee6;--gold:#b99a5b;--cream:#faf9f5;--ink:#24332c;--muted:#718078;--white:#fff}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--ink);line-height:1.7}
+a{color:inherit;text-decoration:none}
+header{background:rgba(250,249,245,.96);border-bottom:1px solid #e7e5dc;position:sticky;top:0;z-index:10}
+.nav{max-width:1120px;margin:auto;padding:16px 22px;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.brand{font-family:'Playfair Display',serif;font-size:23px;font-weight:700;color:var(--green)}
+.brand span{color:var(--gold)}
+nav{display:flex;gap:17px;flex-wrap:wrap;font-size:13px;color:#59675f}
+nav a:hover{color:var(--gold)}
+.hero{background:var(--green);color:white;padding:75px 22px 70px;position:relative;overflow:hidden}
+.hero:after{content:"✳";position:absolute;font-size:260px;color:#ffffff08;right:4%;top:-70px}
+.wrap{max-width:1060px;margin:auto}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:3px;color:var(--gold);font-weight:700}
+h1,h2,h3{font-family:'Playfair Display',serif;font-weight:600;line-height:1.2}
+h1{font-size:clamp(38px,6vw,64px);max-width:700px;margin:17px 0}
+.hero p{max-width:620px;color:#dce6df;font-size:16px}
+main{max-width:1060px;margin:auto;padding:52px 22px 70px}
+.section-head{margin-bottom:24px}
+.section-head h2{font-size:32px;color:var(--green);margin:9px 0}
+.section-head p{color:var(--muted);max-width:700px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px;margin-bottom:48px}
+.card{background:white;border:1px solid #e8e8df;border-radius:15px;padding:24px;transition:.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 28px #173d320d}
+.icon{width:43px;height:43px;border-radius:12px;background:var(--sage);display:grid;place-items:center;font-size:21px;margin-bottom:18px}
+.card h3{font-size:21px;color:var(--green);margin-bottom:10px}
+.card p{font-size:14px;color:var(--muted);margin-bottom:17px}
+.link{font-size:13px;font-weight:700;color:#8c6b31}
+.steps{background:#f0f1e9;border-radius:18px;padding:30px;margin-bottom:45px}
+.steps h2{font-size:29px;color:var(--green);margin-bottom:20px}
+.step{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid #dfe3d8}
+.step:last-child{border-bottom:0}
+.num{flex-shrink:0;width:31px;height:31px;background:var(--green);color:white;border-radius:50%;display:grid;place-items:center;font-size:13px}
+.step h3{font-family:'DM Sans',sans-serif;font-size:15px;margin-bottom:4px}
+.step p{font-size:13px;color:var(--muted)}
+.notice{border-left:3px solid var(--gold);background:white;padding:22px 24px;border-radius:0 12px 12px 0;margin-bottom:45px}
+.notice strong{color:var(--green)}
+.notice p{font-size:14px;color:var(--muted);margin-top:5px}
+.cta{background:var(--deep);border-radius:18px;padding:32px;color:white;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.cta h2{font-size:27px;margin:7px 0}
+.cta p{font-size:14px;color:#d4e0d7}
+.button{display:inline-block;background:var(--gold);color:#172f25;padding:12px 18px;border-radius:8px;font-size:13px;font-weight:700}
+footer{border-top:1px solid #e7e5dc;padding:25px 22px;text-align:center;color:var(--muted);font-size:12px}
+footer a{color:var(--green);margin:0 8px}
+@media(max-width:760px){.grid{grid-template-columns:1fr 1fr}.nav{align-items:flex-start;flex-direction:column}.hero{padding:55px 22px}.cta{padding:25px}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.section-head h2{font-size:28px}.steps{padding:22px 17px}}
+</style>
+</head>
+<body>
+<header>
+<div class="nav">
+<a class="brand" href="index.html">Agathiya<span>Nova</span></a>
+<nav>
+<a href="index.html">Home</a>
+<a href="students.html">Students</a>
+<a href="plants.html">Plant Library</a>
+<a href="research.html">Research</a>
+<a href="agathiyan.html">Agathiyan AI ↗</a>
+</nav>
+</div>
+</header>
+
+<section class="hero">
+<div class="wrap">
+<div class="eyebrow">Knowledge · Evidence · Discovery</div>
+<h1>Research with purpose.<br>Discover with care.</h1>
+<p>A dedicated space for Siddha students to explore scientific literature, develop research questions and build responsible, evidence-informed projects.</p>
+</div>
+</section>
+
+<main>
+<section class="section-head">
+<div class="eyebrow">Explore resources</div>
+<h2>Your Research Toolkit</h2>
+<p>Start with trusted scientific databases and build your understanding step by step. Always read the full paper when available and verify important findings.</p>
+</section>
+
+<div class="grid">
+<a class="card" href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">
+<div class="icon">🔬</div>
+<h3>PubMed</h3>
+<p>Search biomedical literature, clinical studies, reviews and health-science research.</p>
+<span class="link">Explore PubMed ↗</span>
+</a>
+<a class="card" href="https://scholar.google.com/" target="_blank" rel="noopener">
+<div class="icon">📚</div>
+<h3>Google Scholar</h3>
+<p>Discover academic papers, theses, books and citations across different disciplines.</p>
+<span class="link">Search literature ↗</span>
+</a>
+<a class="card" href="https://www.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">
+<div class="icon">🧬</div>
+<h3>NCBI</h3>
+<p>Access biological databases and scientific information maintained by NCBI.</p>
+<span class="link">Visit NCBI ↗</span>
+</a>
+<a class="card" href="https://www.who.int/" target="_blank" rel="noopener">
+<div class="icon">🌍</div>
+<h3>WHO</h3>
+<p>Explore global health publications, public-health resources and traditional medicine information.</p>
+<span class="link">Explore WHO ↗</span>
+</a>
+<a class="card" href="https://www.icmr.gov.in/" target="_blank" rel="noopener">
+<div class="icon">🇮🇳</div>
+<h3>ICMR</h3>
+<p>Find Indian medical research resources, guidance and updates from the national research body.</p>
+<span class="link">Visit ICMR ↗</span>
+</a>
+<a class="card" href="https://ayush.gov.in/" target="_blank" rel="noopener">
+<div class="icon">🌿</div>
+<h3>Ministry of AYUSH</h3>
+<p>Explore official information about traditional systems of medicine in India.</p>
+<span class="link">Explore AYUSH ↗</span>
+</a>
+</div>
+
+<section class="steps">
+<div class="eyebrow">A practical framework</div>
+<h2>From idea to research project</h2>
+<div class="step"><div class="num">1</div><div><h3>Choose a focused question</h3><p>Identify a specific topic in Siddha medicine, medicinal botany or integrative health that can be explored responsibly.</p></div></div>
+<div class="step"><div class="num">2</div><div><h3>Review existing literature</h3><p>Search relevant databases, compare sources and record the authors, publication year and study type.</p></div></div>
+<div class="step"><div class="num">3</div><div><h3>Evaluate the evidence</h3><p>Distinguish laboratory studies, animal studies, observational research and human clinical trials. One study alone rarely establishes effectiveness.</p></div></div>
+<div class="step"><div class="num">4</div><div><h3>Plan your methodology</h3><p>Define your objective, study design, materials, data-collection method and limitations before beginning.</p></div></div>
+<div class="step"><div class="num">5</div><div><h3>Write and cite responsibly</h3><p>Use your own words, cite original sources and report results honestly, including limitations and unexpected findings.</p></div></div>
+</section>
+
+<section class="notice">
+<strong>Research integrity matters</strong>
+<p>Do not present traditional use as proven clinical effectiveness without suitable evidence. Human or animal research may require institutional ethics approval. Never test a medicinal preparation on yourself or others as an informal experiment.</p>
+</section>
+
+<section class="cta">
+<div>
+<div class="eyebrow">Your learning companion</div>
+<h2>Have a research question?</h2>
+<p>Use Agathiyan AI to brainstorm topics and understand concepts.</p>
+</div>
+<a class="button" href="agathiyan.html">Explore Agathiyan AI ↗</a>
+</section>
+</main>
+
+<footer>
+<p>© 2026 AgathiyaNova · Ancient Wisdom. Future Innovation.</p>
+<p style="margin-top:9px"><a href="index.html">Home</a><a href="students.html">Students</a><a href="plants.html">Plant Library</a><a href="agathiyan.html">Agathiyan AI</a></p>
+</footer>
+</body>
+</html>
