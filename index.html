@@ -1,158 +1,321 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SiddhaVerse | Siddha Education & Research</title><style>
-* {
-    box-sizing: border-box;
+<meta name="theme-color" content="#123d2c">
+<title>SiddhaVerse | Siddha Education & Research</title>
+<style>
+:root {
+  --green:#123d2c;
+  --green2:#205b43;
+  --mint:#e8f3e9;
+  --cream:#fbfaf5;
+  --gold:#d4b56a;
+  --text:#24352c;
+  --muted:#68766c;
+  --white:#ffffff;
 }
-
+* {box-sizing:border-box;margin:0;padding:0}
+html {scroll-behavior:smooth}
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f5f8f2;
-    color: #203b2d;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--cream);
+  color:var(--text);
+  line-height:1.6;
 }
-
 header {
-    background: #174b35;
-    color: white;
-    text-align: center;
-    padding: 25px 15px;
+  background:var(--green);
+  color:white;
+  padding:17px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:14px;
 }
-
-header h1 {
-    font-size: 32px;
-    margin: 0;
-}
-
-nav {
-    background: white;
-    padding: 16px 8px;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 18px;
-}
-
-nav a {
-    color: #174b35;
-    font-weight: bold;
-    text-decoration: none;
-}
-
+.brand {font-size:25px;font-weight:800;letter-spacing:.3px}
+.brand span {color:var(--gold)}
+nav {display:flex;gap:18px;flex-wrap:wrap}
+nav a {color:white;text-decoration:none;font-size:13px}
+nav a:hover {color:var(--gold)}
 .hero {
-    text-align: center;
-    padding: 55px 20px;
-    background: #e5efe3;
+  padding:65px 7% 60px;
+  background:linear-gradient(135deg,#123d2c,#286b4c);
+  color:white;
 }
-
-.hero h2 {
-    font-size: 34px;
+.tag {
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:12px;
+  font-weight:bold;
 }
-
-.hero p {
-    line-height: 1.7;
+.hero h1 {
+  font-size:clamp(36px,7vw,62px);
+  line-height:1.12;
+  max-width:750px;
+  margin:18px 0;
 }
-
-.button {
-    display: inline-block;
-    background: #174b35;
-    color: white;
-    padding: 13px 22px;
-    border-radius: 8px;
-    text-decoration: none;
+.hero h1 span {color:#d9e9b8}
+.hero p {max-width:620px;color:#e0eae2;font-size:16px}
+.buttons {display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn {
+  display:inline-block;
+  text-decoration:none;
+  padding:12px 19px;
+  border-radius:8px;
+  font-weight:bold;
+  font-size:14px;
 }
-
-.section {
-    max-width: 1000px;
-    margin: auto;
-    padding: 30px 20px;
+.btn-primary {background:var(--gold);color:#183827}
+.btn-secondary {border:1px solid #b8d0bd;color:white}
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  max-width:680px;
+  margin-top:38px;
 }
-
-.section h2 {
-    text-align: center;
+.stat {
+  padding:14px;
+  background:#ffffff12;
+  border:1px solid #ffffff20;
+  border-radius:10px;
 }
-
-.cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
+.stat strong {display:block;font-size:20px;color:var(--gold)}
+.stat small {font-size:12px;color:#e0eae2}
+section {padding:54px 6%}
+.section-head {margin-bottom:25px}
+.eyebrow {
+  color:var(--green2);
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  font-size:11px;
+  font-weight:bold;
 }
-
+h2 {font-size:clamp(25px,4vw,36px);margin:7px 0;color:var(--green)}
+.section-head p {color:var(--muted);max-width:650px;font-size:14px}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:17px;
+}
 .card {
-    background: white;
-    padding: 22px;
-    border-radius: 12px;
-    border: 1px solid #dce6d8;
+  background:white;
+  border:1px solid #e3e9df;
+  padding:23px;
+  border-radius:15px;
+  box-shadow:0 5px 20px #153d2c08;
+  transition:transform .2s,box-shadow .2s;
 }
-
-.card p {
-    line-height: 1.6;
+.card:hover {transform:translateY(-4px);box-shadow:0 10px 25px #153d2c12}
+.icon {
+  width:46px;height:46px;border-radius:12px;
+  background:var(--mint);
+  display:grid;place-items:center;font-size:23px;
+  margin-bottom:15px;
 }
-
+.card h3 {color:var(--green);font-size:17px;margin-bottom:8px}
+.card p {color:var(--muted);font-size:13px;margin-bottom:14px}
+.card a {color:var(--green2);font-size:13px;font-weight:bold;text-decoration:none}
+.searchbox {
+  width:100%;padding:13px 15px;border:1px solid #dce5dc;
+  border-radius:9px;font-size:15px;margin:0 0 22px;
+  background:white;
+}
+.subjects {display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}
+.pill {
+  background:var(--mint);color:var(--green);
+  border-radius:30px;padding:8px 13px;font-size:12px;
+  font-weight:bold;
+}
+.plant-card {border-top:4px solid var(--green2)}
+.plant-card .latin {font-style:italic;color:var(--muted);font-size:12px}
+.notice {
+  background:#fff8e7;border-left:4px solid var(--gold);
+  padding:15px;border-radius:5px;font-size:13px;color:#64532e;
+  margin-top:20px;
+}
+.ai-panel {
+  background:var(--green);color:white;border-radius:18px;
+  padding:30px;display:grid;grid-template-columns:1fr 1fr;
+  gap:25px;align-items:center;
+}
+.ai-panel h2 {color:white}
+.ai-panel p {font-size:14px;color:#dbe8de}
+.ai-panel .btn {margin-top:16px}
+.ai-panel .ai-box {
+  padding:20px;background:#ffffff10;border:1px solid #ffffff25;
+  border-radius:12px;font-size:13px;color:#e4eee5;
+}
 footer {
-    background: #174b35;
-    color: white;
-    text-align: center;
-    padding: 22px;
+  background:#0d2d21;color:#dbe6dd;
+  padding:28px 6%;font-size:12px;
+  display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;
 }
-</style></head><body><header>
-    <h1>🌿 SiddhaVerse</h1>
-    <p>Siddha Education & Research Lab</p>
-</header><nav>
+footer strong {color:var(--gold)}
+.hidden {display:none!important}
+@media(max-width:760px) {
+  header {padding:15px 5%}
+  nav {gap:12px}
+  nav a {font-size:12px}
+  .hero {padding:48px 6%}
+  .grid {grid-template-columns:1fr}
+  section {padding:40px 5%}
+  .ai-panel {grid-template-columns:1fr;padding:23px}
+  .stats {gap:7px}
+  .stat {padding:10px}
+  .stat strong {font-size:17px}
+  .stat small {font-size:10px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">🌿 Siddha<span>Verse</span></div>
+  <nav>
     <a href="#home">Home</a>
-    <a href="#student">Student Hub</a>
+    <a href="#students">Student Hub</a>
     <a href="#plants">Plant Library</a>
-    <a href="#research">Research Hub</a>
-    <a href="#ai">AI Assistant</a>
-</nav><section class="hero" id="home">
-    <h2>Explore Siddha. Discover Science.</h2>
-    <p>
-        A digital learning and research companion
-        for Siddha medicine students and researchers.
-    </p>
-    <a class="button" href="#student">Start Exploring</a>
-</section><section class="section" id="student">
-    <h2>📚 Student Hub</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Study Resources</h3>
-            <p>Organize Siddha subjects, learning materials and revision notes.</p>
-        </div>
-        <div class="card">
-            <h3>Revision Corner</h3>
-            <p>A dedicated space for quizzes and practice questions.</p>
-        </div>
+    <a href="#research">Research</a>
+    <a href="#ai">AI Lab</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="tag">Traditional Wisdom · Modern Research</div>
+  <h1>Explore Siddha.<br><span>Discover More.</span></h1>
+  <p>A learning and research platform designed to help Siddha students explore traditional knowledge, medicinal botany and modern scientific literature.</p>
+  <div class="buttons">
+    <a class="btn btn-primary" href="#students">Explore Student Hub →</a>
+    <a class="btn btn-secondary" href="#plants">Discover Medicinal Plants</a>
+  </div>
+  <div class="stats">
+    <div class="stat"><strong>Learn</strong><small>Student resources</small></div>
+    <div class="stat"><strong>Explore</strong><small>Medicinal botany</small></div>
+    <div class="stat"><strong>Research</strong><small>Scientific discovery</small></div>
+  </div>
+</section>
+
+<section id="students">
+  <div class="section-head">
+    <div class="eyebrow">01 · Learn & Grow</div>
+    <h2>Student Hub</h2>
+    <p>Your starting point for organising Siddha medical education resources.</p>
+  </div>
+  <input class="searchbox" id="subjectSearch" type="search" placeholder="Search subjects..." aria-label="Search subjects">
+  <div class="grid" id="subjectGrid">
+    <article class="card subject" data-search="medicinal botany plants herbs taxonomy">
+      <div class="icon">🌱</div><h3>Medicinal Botany</h3>
+      <p>Explore plant identification, botanical classification and medicinal plant study.</p>
+      <div class="subjects"><span class="pill">Botany</span><span class="pill">Plants</span></div>
+    </article>
+    <article class="card subject" data-search="siddha maruthuvam fundamental principles">
+      <div class="icon">📜</div><h3>Siddha Fundamentals</h3>
+      <p>Organise learning around core concepts and traditional Siddha literature.</p>
+      <div class="subjects"><span class="pill">Theory</span><span class="pill">Tradition</span></div>
+    </article>
+    <article class="card subject" data-search="research methodology scientific papers evidence">
+      <div class="icon">🔬</div><h3>Research Methodology</h3>
+      <p>Learn about research questions, study design, references and evidence appraisal.</p>
+      <div class="subjects"><span class="pill">Research</span><span class="pill">Evidence</span></div>
+    </article>
+  </div>
+  <p id="noSubjects" class="hidden">No matching subjects found. Try another search.</p>
+</section>
+
+<section id="plants">
+  <div class="section-head">
+    <div class="eyebrow">02 · Explore Nature</div>
+    <h2>Medicinal Plant Library</h2>
+    <p>A starter directory for botanical learning. Verify identification and uses using reliable references.</p>
+  </div>
+  <div class="grid">
+    <article class="card plant-card">
+      <div class="icon">🍃</div><h3>Thulasi</h3>
+      <p class="latin">Ocimum tenuiflorum</p>
+      <p>Also known as holy basil. Study its botanical characteristics and published research.</p>
+    </article>
+    <article class="card plant-card">
+      <div class="icon">🌿</div><h3>Manjal</h3>
+      <p class="latin">Curcuma longa</p>
+      <p>Turmeric, a rhizomatous plant widely studied for its chemical constituents.</p>
+    </article>
+    <article class="card plant-card">
+      <div class="icon">🌳</div><h3>Neem</h3>
+      <p class="latin">Azadirachta indica</p>
+      <p>A tree of traditional importance with a substantial body of botanical literature.</p>
+    </article>
+  </div>
+  <div class="notice">Educational use only: plant identification, preparation and safety require reliable references and qualified guidance. Do not use this directory to self-treat illnesses.</div>
+</section>
+
+<section id="research">
+  <div class="section-head">
+    <div class="eyebrow">03 · Evidence & Discovery</div>
+    <h2>Research Hub</h2>
+    <p>Find scientific literature and build good research habits.</p>
+  </div>
+  <div class="grid">
+    <article class="card">
+      <div class="icon">📚</div><h3>Research Papers</h3>
+      <p>Search published literature and review the authors, methods, results and limitations.</p>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/" target="_blank" rel="noopener">Explore PubMed ↗</a>
+    </article>
+    <article class="card">
+      <div class="icon">🧪</div><h3>Evidence Review</h3>
+      <p>Distinguish traditional use, laboratory findings, clinical evidence and established guidance.</p>
+      <a href="https://scholar.google.com/" target="_blank" rel="noopener">Search Google Scholar ↗</a>
+    </article>
+    <article class="card">
+      <div class="icon">📝</div><h3>Research Notes</h3>
+      <p>Record research questions, citations, study design and key findings for your projects.</p>
+      <span class="pill">Study workspace</span>
+    </article>
+  </div>
+</section>
+
+<section id="ai">
+  <div class="ai-panel">
+    <div>
+      <div class="eyebrow" style="color:#d4b56a">04 · Research Innovation</div>
+      <h2>Siddha AI Research Lab</h2>
+      <p>A future research assistant concept to help students explore literature, organise notes and understand scientific concepts.</p>
+      <a class="btn btn-primary" href="https://scholar.google.com/" target="_blank" rel="noopener">Start Literature Search ↗</a>
     </div>
-</section><section class="section" id="plants">
-    <h2>🌱 Medicinal Plant Library</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Botanical Profiles</h3>
-            <p>Explore botanical names, plant families and verified references.</p>
-        </div>
-        <div class="card">
-            <h3>Plant Research</h3>
-            <p>Organize educational information about medicinal plants.</p>
-        </div>
+    <div class="ai-box">
+      <strong>🤖 AI Research Assistant</strong><br><br>
+      Current status: Preview interface<br><br>
+      A live AI service has not been connected yet. For reliable research, verify answers against original papers and trusted sources.
     </div>
-</section><section class="section" id="research">
-    <h2>🔬 Research Hub</h2>
-    <div class="cards">
-        <div class="card">
-            <h3>Research Library</h3>
-            <p>Discover and organize research papers and academic references.</p>
-        </div>
-    </div>
-</section><section class="section" id="ai">
-    <h2>🤖 AI Research Assistant</h2>
-    <div class="card">
-        <h3>Learn. Explore. Research.</h3>
-        <p>AI-assisted research features will be added in a future version.</p>
-    </div>
-</section><footer>
-    <p>SiddhaVerse | Siddha Education & Research</p>
-    <p>Educational technology project</p>
-</footer></body>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div><strong>🌿 SiddhaVerse</strong><br>Siddha Education & Research Lab</div>
+  <div>Built for learning, exploration and responsible research.<br>Educational platform · Not a substitute for medical advice.</div>
+</footer>
+
+<script>
+const search = document.getElementById('subjectSearch');
+const cards = [...document.querySelectorAll('.subject')];
+const noResults = document.getElementById('noSubjects');
+
+search.addEventListener('input', () => {
+  const query = search.value.trim().toLowerCase();
+  let visible = 0;
+  cards.forEach(card => {
+    const matches = (card.innerText + ' ' + card.dataset.search).toLowerCase().includes(query);
+    card.classList.toggle('hidden', !matches);
+    if (matches) visible++;
+  });
+  noResults.classList.toggle('hidden', visible !== 0);
+});
+</script>
+
+</body>
 </html>
