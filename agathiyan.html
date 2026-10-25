@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101810">
+<title>Agathiyan AI | AgathiyaNova</title>
+<style>
+:root {
+  --bg: #101810;
+  --panel: #18231b;
+  --green: #a8d5a0;
+  --text: #f1f5ed;
+  --muted: #a5b2a3;
+  --border: #304334;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  height: 100dvh;
+  overflow: hidden;
+}
+.app { display: flex; height: 100dvh; }
+.sidebar {
+  width: 265px;
+  flex-shrink: 0;
+  background: #0b120d;
+  border-right: 1px solid var(--border);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.brand { font-size: 21px; font-weight: 750; color: var(--green); }
+.tagline { font-size: 12px; color: var(--muted); margin-top: 4px; }
+button { font: inherit; cursor: pointer; }
+.new-chat {
+  background: var(--panel);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: left;
+}
+.history-title {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 8px;
+}
+.history-list { overflow-y: auto; }
+.history-item {
+  display: block;
+  width: 100%;
+  background: transparent;
+  color: var(--text);
+  border: 0;
+  text-align: left;
+  padding: 10px 6px;
+  border-radius: 8px;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.history-item:hover { background: var(--panel); }
+.sidebar-bottom { margin-top: auto; color: var(--muted); font-size: 12px; }
+.main { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.topbar {
+  min-height: 64px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 12px;
+}
+.menu-btn {
+  display: none;
+  background: transparent;
+  border: 0;
+  color: var(--text);
+  font-size: 23px;
+}
+.top-title { font-weight: 650; }
+.status { color: var(--green); font-size: 12px; margin-left: auto; }
+.chat {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 18px 20px;
+  scroll-behavior: smooth;
+}
+.welcome {
+  max-width: 720px;
+  margin: 8vh auto 28px;
+  text-align: center;
+}
+.leaf { font-size: 43px; }
+.welcome h1 { font-size: clamp(25px, 5vw, 38px); margin: 12px 0; }
+.welcome h1 span { color: var(--green); }
+.welcome p { color: var(--muted); line-height: 1.7; }
+.suggestions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  max-width: 720px;
+  margin: 24px auto;
+}
+.suggestion {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 14px;
+  border-radius: 13px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.suggestion:hover { border-color: var(--green); }
+.messages { max-width: 800px; margin: 0 auto; }
+.message { display: flex; gap: 12px; margin: 22px 0; align-items: flex-start; }
+.avatar {
+  flex: 0 0 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--panel);
+  border: 1px solid var(--border);
+}
+.message-body { min-width: 0; flex: 1; line-height: 1.75; white-space: pre-wrap; overflow-wrap: anywhere; }
+.message.user .avatar { background: #293a2b; }
+.message.user .message-body { padding-top: 5px; }
+.message.assistant .message-body { padding-top: 3px; }
+.composer-wrap {
+  padding: 12px 16px max(12px, env(safe-area-inset-bottom));
+  background: linear-gradient(transparent, var(--bg) 18%);
+}
+.composer {
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid #425747;
+  background: #1b281e;
+  border-radius: 18px;
+  padding: 9px 10px 9px 15px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+#prompt {
+  flex: 1;
+  min-width: 0;
+  max-height: 150px;
+  resize: none;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  line-height: 1.5;
+  padding: 8px 0;
+}
+#prompt::placeholder { color: #a1afa1; }
+.send {
+  border: 0;
+  border-radius: 12px;
+  background: var(--green);
+  color: #122014;
+  font-weight: 750;
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+}
+.send:disabled { opacity: .5; cursor: wait; }
+.disclaimer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 11px;
+  padding-top: 8px;
+}
+.hidden { display: none !important; }
+@media (max-width: 650px) {
+  .sidebar {
+    position: fixed; z-index: 5; top: 0; bottom: 0; left: 0;
+    transform: translateX(-105%); transition: transform .2s ease;
+    width: min(290px, 85vw);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .menu-btn { display: block; }
+  .topbar { min-height: 56px; padding: 0 12px; }
+  .chat { padding: 14px 13px; }
+  .welcome { margin: 8vh auto 22px; }
+  .suggestions { grid-template-columns: 1fr; gap: 8px; }
+  .suggestion { padding: 12px; }
+  .composer-wrap { padding-left: 10px; padding-right: 10px; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" id="sidebar">
+    <div>
+      <div class="brand">🌿 Agathiyan AI</div>
+      <div class="tagline">Ancient Wisdom. Future Innovation.</div>
+    </div>
+    <button class="new-chat" id="newChat">＋ New chat</button>
+    <div class="history-title">RECENT CHATS</div>
+    <div class="history-list" id="historyList"></div>
+    <div class="sidebar-bottom">AgathiyaNova<br>Siddha Education & AI Research</div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      <div class="top-title">Agathiyan <span style="color:var(--green)">AI</span></div>
+      <div class="status">● Online</div>
+    </header>
+
+    <section class="chat" id="chat">
+      <div class="welcome" id="welcome">
+        <div class="leaf">🌿</div>
+        <h1>Vanakkam! I'm <span>Agathiyan.</span></h1>
+        <p>Your AI companion for learning, discovery, Siddha knowledge, medicinal botany and beyond.<br>Ask me anything to begin.</p>
+        <div class="suggestions">
+          <button class="suggestion">🌱 Explain Siddha medicine in simple Tamil</button>
+          <button class="suggestion">📚 Help me study medicinal botany</button>
+          <button class="suggestion">🔬 Explain a scientific concept simply</button>
+          <button class="suggestion">🌐 Let's chat in Tanglish</button>
+        </div>
+      </div>
+      <div class="messages" id="messages"></div>
+    </section>
+
+    <div class="composer-wrap">
+      <form class="composer" id="chatForm">
+        <textarea id="prompt" rows="1" placeholder="Message Agathiyan..." aria-label="Message Agathiyan"></textarea>
+        <button class="send" id="sendBtn" type="submit" aria-label="Send message">➤</button>
+      </form>
+      <div class="disclaimer">AI can make mistakes. Verify medical information with qualified professionals.</div>
+    </div>
+  </main>
+</div>
+
+<script>
+const WORKER_URL = "https://agathiyan-ai.abinaya17102006.workers.dev/";
+
+const chat = document.getElementById("chat");
+const messages = document.getElementById("messages");
+const welcome = document.getElementById("welcome");
+const promptBox = document.getElementById("prompt");
+const sendBtn = document.getElementById("sendBtn");
+const historyList = document.getElementById("historyList");
+const sidebar = document.getElementById("sidebar");
+
+let conversations = [];
+let currentId = null;
+let busy = false;
+
+function makeId() {
+  return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+}
+
+function startNewChat() {
+  currentId = makeId();
+  conversations.unshift({ id: currentId, title: "New conversation", messages: [] });
+  messages.replaceChildren();
+  welcome.classList.remove("hidden");
+  renderHistory();
+  promptBox.focus();
+  sidebar.classList.remove("open");
+}
+
+function renderHistory() {
+  historyList.replaceChildren();
+  conversations.forEach(item => {
+    if (!item.messages.length) return;
+    const btn = document.createElement("button");
+    btn.className = "history-item";
+    btn.textContent = "💬 " + item.title;
+    btn.onclick = () => loadConversation(item.id);
+    historyList.appendChild(btn);
+  });
+}
+
+function loadConversation(id) {
+  const item = conversations.find(c => c.id === id);
+  if (!item) return;
+  currentId = id;
+  messages.replaceChildren();
+  welcome.classList.toggle("hidden", item.messages.length > 0);
+  item.messages.forEach(m => addMessage(m.role, m.text, false));
+  sidebar.classList.remove("open");
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function addMessage(role, text, save = true) {
+  const row = document.createElement("div");
+  row.className = "message " + role;
+  const avatar = document.createElement("div");
+  avatar.className = "avatar";
+  avatar.textContent = role === "user" ? "👤" : "🌿";
+  const body = document.createElement("div");
+  body.className = "message-body";
+  body.textContent = text;
+  row.append(avatar, body);
+  messages.appendChild(row);
+  if (save && currentId) {
+    const item = conversations.find(c => c.id === currentId);
+    if (item) {
+      item.messages.push({ role, text });
+      if (role === "user" && item.title === "New conversation") {
+        item.title = text.slice(0, 35) || "Conversation";
+        renderHistory();
+      }
+    }
+  }
+  chat.scrollTop = chat.scrollHeight;
+  return body;
+}
+
+async function sendMessage(text) {
+  text = text.trim();
+  if (!text || busy) return;
+  if (!currentId) startNewChat();
+
+  welcome.classList.add("hidden");
+  addMessage("user", text);
+  promptBox.value = "";
+  promptBox.style.height = "auto";
+  busy = true;
+  sendBtn.disabled = true;
+  const responseBody = addMessage("assistant", "Agathiyan is thinking…", false);
+
+  try {
+    const response = await fetch(WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text })
+    });
+
+    const data = await response.json();
+    if (!response.ok) {
+      throw new Error(data.error || data.message || "Request failed (" + response.status + ")");
+    }
+
+    const answer = data.reply || data.answer || data.response ||
+      (data.candidates?.[0]?.content?.parts || []).map(p => p.text || "").join("\n") ||
+      data.message;
+
+    if (!answer || typeof answer !== "string") {
+      throw new Error("The AI returned no answer. Please check the Worker response format.");
+    }
+
+    responseBody.textContent = answer;
+    const item = conversations.find(c => c.id === currentId);
+    if (item) item.messages.push({ role: "assistant", text: answer });
+  } catch (error) {
+    responseBody.textContent = "Sorry, I couldn't connect right now.\n" +
+      (error.message || "Please try again.");
+  } finally {
+    busy = false;
+    sendBtn.disabled = false;
+    promptBox.focus();
+    chat.scrollTop = chat.scrollHeight;
+  }
+}
+
+document.getElementById("chatForm").addEventListener("submit", e => {
+  e.preventDefault();
+  sendMessage(promptBox.value);
+});
+
+promptBox.addEventListener("input", () => {
+  promptBox.style.height = "auto";
+  promptBox.style.height = Math.min(promptBox.scrollHeight, 150) + "px";
+});
+
+promptBox.addEventListener("keydown", e => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    document.getElementById("chatForm").requestSubmit();
+  }
+});
+
+document.getElementById("newChat").addEventListener("click", startNewChat);
+document.getElementById("menuBtn").addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+});
+
+document.querySelectorAll(".suggestion").forEach(btn => {
+  btn.addEventListener("click", () => sendMessage(btn.textContent.replace(/^[^\w\u0B80-\u0BFF]+/u, "").trim()));
+});
+
+startNewChat();
+</script>
+</body>
+  </html>
