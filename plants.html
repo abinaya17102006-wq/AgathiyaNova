@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#063f32">
+<title>Medicinal Plant Library | AgathiyaNova</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--green:#063f32;--light:#105b46;--sage:#e7efe3;--ivory:#f8f8f1;--gold:#c59a4b;--text:#243b32;--muted:#68786d;--border:#e2e6dc}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ivory);color:var(--text);font-family:"DM Sans",sans-serif;line-height:1.7}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,90%);margin:auto}
+header{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:10}
+nav{min-height:75px;display:flex;align-items:center;justify-content:space-between;gap:15px}
+.brand{font-family:"Playfair Display",serif;font-size:23px;font-weight:700;color:var(--green)}
+.brand span{display:block;font-family:"DM Sans",sans-serif;font-size:9px;letter-spacing:1.5px;color:var(--muted)}
+.links{display:flex;align-items:center;gap:18px;font-size:12px;font-weight:700}
+.links a:hover{color:var(--gold)}
+.ai{background:var(--green);color:#fff;padding:10px 13px;border-radius:9px}
+.hero{padding:65px 0 48px;background:radial-gradient(ellipse at 90% 10%,#e0ead9,transparent 40%)}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:2.5px;color:#98753a;text-transform:uppercase}
+h1,h2,h3{font-family:"Playfair Display",serif;line-height:1.25}
+h1{font-size:clamp(37px,7vw,60px);color:var(--green);margin:15px 0}
+.hero p{max-width:690px;color:var(--muted);font-size:15px}
+.section{padding:40px 0 75px}
+.tools{display:flex;gap:12px;flex-wrap:wrap;margin:18px 0 30px}
+input,select{min-width:0;padding:13px 15px;border:1px solid var(--border);border-radius:10px;background:#fff;font:inherit;color:var(--text)}
+input{flex:1}
+select{max-width:100%}
+.count{color:var(--muted);font-size:12px;margin-bottom:15px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.card{background:#fff;border:1px solid var(--border);border-radius:18px;overflow:hidden;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 12px 30px #063f3210}
+.art{height:150px;background:linear-gradient(135deg,#e6efe0,#d5e4ce);display:grid;place-items:center;font-size:65px}
+.content{padding:22px}
+.tag{font-size:10px;letter-spacing:1px;color:#98753a;text-transform:uppercase;font-weight:700}
+h3{font-size:23px;color:var(--green);margin:8px 0 2px}
+.latin{font-size:12px;color:var(--muted);font-style:italic}
+.content p{font-size:13px;color:var(--muted);margin:15px 0}
+.family{display:inline-block;background:var(--sage);color:var(--green);padding:5px 9px;border-radius:7px;font-size:10px}
+.note{margin-top:32px;background:#fff9ed;border:1px solid #eadfc7;padding:18px;border-radius:12px;font-size:12px;color:#776641}
+footer{background:#032f26;color:white;padding:35px 0}
+.foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:15px}
+.foot a{font-size:12px;margin-right:12px}
+.foot p{font-size:12px;color:#c0d1c6}
+@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.links{gap:9px}.links .optional{display:none}}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.art{height:130px}.content{padding:19px}.hero{padding-top:45px}nav{min-height:67px}.brand{font-size:19px}}
+</style>
+</head>
+<body>
+<header>
+<div class="container">
+<nav>
+<a class="brand" href="index.html">🌿 AgathiyaNova<span>SIDDHA KNOWLEDGE & INNOVATION</span></a>
+<div class="links">
+<a href="index.html">Home</a>
+<a class="optional" href="students.html">Students</a>
+<a class="optional" href="research.html">Research</a>
+<a class="ai" href="agathiyan.html">Ask Agathiyan ↗</a>
+</div>
+</nav>
+</div>
+</header>
+
+<main>
+<section class="hero">
+<div class="container">
+<div class="eyebrow">Explore · Identify · Learn</div>
+<h1>Medicinal Plant<br>Library.</h1>
+<p>Discover botanical names, plant families and identification features of plants discussed in botany and traditional knowledge. Explore responsibly and learn through reliable references.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="container">
+<div class="tools">
+<input id="search" type="search" placeholder="🔎 Search plant or botanical name..." aria-label="Search plants">
+<select id="family" aria-label="Filter by plant family">
+<option value="">All plant families</option>
+<option value="Lamiaceae">Lamiaceae</option>
+<option value="Zingiberaceae">Zingiberaceae</option>
+<option value="Meliaceae">Meliaceae</option>
+<option value="Acanthaceae">Acanthaceae</option>
+<option value="Asteraceae">Asteraceae</option>
+<option value="Phyllanthaceae">Phyllanthaceae</option>
+</select>
+</div>
+<div class="count" id="count" aria-live="polite"></div>
+<div class="grid" id="plants">
+
+<article class="card" data-name="tulasi tulsi ocimum tenuiflorum" data-family="Lamiaceae">
+<div class="art">🌿</div><div class="content">
+<div class="tag">Aromatic herb</div><h3>Tulasi</h3><div class="latin">Ocimum tenuiflorum</div>
+<p>An aromatic herb in the mint family. It is widely cultivated in South Asia and is familiar in traditional plant knowledge.</p>
+<span class="family">Lamiaceae</span>
+</div></article>
+
+<article class="card" data-name="turmeric manjal curcuma longa" data-family="Zingiberaceae">
+<div class="art">🌼</div><div class="content">
+<div class="tag">Rhizomatous herb</div><h3>Manjal (Turmeric)</h3><div class="latin">Curcuma longa</div>
+<p>A perennial herb recognized by its underground rhizomes and broad leaves. The rhizome is used as a culinary spice.</p>
+<span class="family">Zingiberaceae</span>
+</div></article>
+
+<article class="card" data-name="neem veppam azadirachta indica" data-family="Meliaceae">
+<div class="art">🍃</div><div class="content">
+<div class="tag">Medicinal tree</div><h3>Veppam (Neem)</h3><div class="latin">Azadirachta indica</div>
+<p>A tropical tree with compound leaves. It is an important species in South Asian ethnobotany.</p>
+<span class="family">Meliaceae</span>
+</div></article>
+
+<article class="card" data-name="adathodai adhatoda vasica justicia adhatoda" data-family="Acanthaceae">
+<div class="art">🌱</div><div class="content">
+<div class="tag">Shrub</div><h3>Adathodai</h3><div class="latin">Justicia adhatoda</div>
+<p>An evergreen shrub with opposite leaves and prominent flower spikes. It is discussed in traditional medicinal plant literature.</p>
+<span class="family">Acanthaceae</span>
+</div></article>
+
+<article class="card" data-name="karisalankanni eclipta prostrata bhringraj" data-family="Asteraceae">
+<div class="art">🌼</div><div class="content">
+<div class="tag">Flowering herb</div><h3>Karisalankanni</h3><div class="latin">Eclipta prostrata</div>
+<p>A small herb with opposite leaves and tiny flower heads. Botanical identification should use several plant features.</p>
+<span class="family">Asteraceae</span>
+</div></article>
+
+<article class="card" data-name="keezhanelli phyllanthus amarus" data-family="Phyllanthaceae">
+<div class="art">🍀</div><div class="content">
+<div class="tag">Small herb</div><h3>Keezhanelli</h3><div class="latin">Phyllanthus amarus</div>
+<p>A small herb with distinctive rows of leaves along its branchlets and small fruits beneath the leaves.</p>
+<span class="family">Phyllanthaceae</span>
+</div></article>
+
+</div>
+
+<div class="note">
+<strong>Educational and safety note:</strong> This library is for learning and botanical awareness, not self-diagnosis or treatment. Plant identification can be difficult, and common names may refer to different species. Do not consume plants or prepare remedies based only on this page. Consult qualified professionals and reliable botanical references.
+</div>
+</div>
+</section>
+</main>
+
+<footer><div class="container foot">
+<div><strong>🌿 AgathiyaNova</strong><p>Ancient Wisdom. Future Innovation.</p></div>
+<div><a href="index.html">Home</a><a href="students.html">Student Hub</a><a href="research.html">Research Hub</a><a href="agathiyan.html">Agathiyan AI</a></div>
+</div></footer>
+
+<script>
+const search = document.getElementById("search");
+const family = document.getElementById("family");
+const cards = [...document.querySelectorAll(".card")];
+const count = document.getElementById("count");
+
+function filterPlants() {
+  const query = search.value.toLowerCase().trim();
+  const selectedFamily = family.value;
+  let visible = 0;
+
+  cards.forEach(card => {
+    const matchesName = (card.dataset.name + " " + card.innerText).toLowerCase().includes(query);
+    const matchesFamily = !selectedFamily || card.dataset.family === selectedFamily;
+    const show = matchesName && matchesFamily;
+    card.style.display = show ? "" : "none";
+    if (show) visible++;
+  });
+
+  count.textContent = visible + (visible === 1 ? " plant found" : " plants found");
+}
+
+search.addEventListener("input", filterPlants);
+family.addEventListener("change", filterPlants);
+filterPlants();
+</script>
+</body>
+</html>
